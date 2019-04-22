@@ -20,8 +20,9 @@ class BotMan {
     		driver: 'web',
     		userId: this.userId,
     		message: text,
-    		attachment: attachment as Blob,
-    		interactive: interactive ? '1' : '0'
+    		attachment: attachment ? 'image' : null,
+    		interactive: interactive ? '1' : '0',
+				attachment_data: attachment as Blob,
     	};
 
     	Object.keys(postData).forEach(key => data.append(key, postData[key]));

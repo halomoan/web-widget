@@ -83,12 +83,11 @@ export default class Chat extends Component<IChatProps, IChatState> {
                 <input id="fileupload" style="display: none" type="file" onChange={this.handleFileSelect}/>
                 <div class="container">
                 <div class="btnArea">
-
                   <a href="#" id="btnAttachment" >
-                                    <img src="data:image/png;base64,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" alt="attachment"
-                                    onClick={this.handleUpload}
-                                    />
-                                    </a>
+                  <img src="data:image/png;base64,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" alt="attachment"
+                  onClick={this.handleUpload}
+                  />
+                  </a>
                 </div>
                 <div class="typeArea">
                 {this.state.replyType === ReplyType.Text ? (
@@ -174,7 +173,21 @@ export default class Chat extends Component<IChatProps, IChatState> {
     };
 
     handleFileSelect = (e: HTMLInputEvent) => {
-        let files: any = e.target.files[0];
+        // let file: any = e.target.files[0];
+        // let url = file && URL.createObjectURL(file);
+        // let postData: FormData  = new FormData();
+        // postData.append('driver', 'web');
+        // postData.append('userId', this.props.userId);
+        // postData.append('message', null);
+        // postData.append('attachment', 'image');
+        // postData.append('interactive', '0');
+        // postData.append('attachment_data', e.target.files[0] );
+
+        this.botman.callAPI(null, false, e.target.files[0], (msg: IMessage) => {
+            msg.from = "chatbot";
+            this.writeToMessages(msg);
+        });
+
      };
 
     static generateUuid() {
