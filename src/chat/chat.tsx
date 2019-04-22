@@ -16,8 +16,10 @@ export default class Chat extends Component<IChatProps, IChatState> {
         this.botman = botman;
         this.botman.setUserId(this.props.userId);
         this.botman.setChatServer(this.props.conf.chatServer);
-        this.state.messages = [];
-        this.state.replyType = ReplyType.Text;
+        // this.state.messages = [];
+        this.setState({ messages : []});
+        // this.state.replyType = ReplyType.Text;
+        this.setState({ replyType : ReplyType.Text});
     }
 
     componentDidMount() {
@@ -89,6 +91,7 @@ export default class Chat extends Component<IChatProps, IChatState> {
                             this.input = input as HTMLInputElement;
                         }}
                         onKeyPress={this.handleKeyPress}
+                        autocomplete="off"
                         autofocus
                     />
                 ) : ''}
