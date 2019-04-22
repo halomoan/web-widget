@@ -200,3 +200,13 @@ div.loading-dots .dot-lg {
     color: white;
     text-align: center;
 }
+
+.container {
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+}
+
+.container div {
+  flex: auto ;
+}
