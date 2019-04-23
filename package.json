@@ -7,7 +7,7 @@
     "prestart": "npm run build",
     "build": "cross-env NODE_ENV=production webpack --progress",
     "prebuild": "mkdirp build && ncp src/assets build/assets",
-    "postbuild": "ncp build/js D:/DEV/wamp64/www/uolportal/public/js ",
+    "postbuild": "ncp build/js C:/wamp64/www/uolportal/public/js ",
     "test": "npm run -s lint && jest --coverage",
     "test:watch": "npm run -s test -- --watch",
     "lint": "eslint src test"

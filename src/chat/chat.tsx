@@ -80,7 +80,12 @@ export default class Chat extends Component<IChatProps, IChatState> {
                         messageHandler={this.writeToMessages}
                     />
                 </div>
-                <input id="fileupload" style="display: none" type="file" onChange={this.handleFileSelect}/>
+                <input id="fileupload"
+                      style="display: none"
+                      type="file"
+                      onChange={this.handleFileSelect}
+                      accept="image/png, image/jpeg, image/bmp"
+                />
                 <div class="container">
                 <div class="btnArea">
                   <a href="#" id="btnAttachment" >
@@ -168,13 +173,13 @@ export default class Chat extends Component<IChatProps, IChatState> {
     };
 
     handleUpload = (e: MouseEvent) => {
-      let element: HTMLElement = document.getElementById('fileupload') as HTMLElement;
+      let element: HTMLInputElement = document.getElementById('fileupload') as HTMLInputElement;
+      element.value = "";
       element.click();
     };
 
     handleFileSelect = (e: HTMLInputEvent) => {
-        // let file: any = e.target.files[0];
-        // let url = file && URL.createObjectURL(file);
+
         // let postData: FormData  = new FormData();
         // postData.append('driver', 'web');
         // postData.append('userId', this.props.userId);
