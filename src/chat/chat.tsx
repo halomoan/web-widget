@@ -180,6 +180,7 @@ export default class Chat extends Component<IChatProps, IChatState> {
 
     handleFileSelect = (e: HTMLInputEvent) => {
 
+
         // let postData: FormData  = new FormData();
         // postData.append('driver', 'web');
         // postData.append('userId', this.props.userId);
@@ -188,11 +189,23 @@ export default class Chat extends Component<IChatProps, IChatState> {
         // postData.append('interactive', '0');
         // postData.append('attachment_data', e.target.files[0] );
 
+        const message: IMessage = {
+            text: null,
+            type: "text",
+            from: this.props.userId,
+            attachment: e.target.files[0]
+        };
+
+        const attachment: IAttachment{
+          
+        }
+
+
         this.botman.callAPI(null, false, e.target.files[0], (msg: IMessage) => {
             msg.from = "chatbot";
             this.writeToMessages(msg);
         });
-
+        this.writeToMessages(message);
      };
 
     static generateUuid() {
