@@ -1,7 +1,7 @@
 import { h, Component } from "preact";
 import MessageArea from "./message-area";
 import { botman } from "./botman";
-import {IMessage, IConfiguration} from "../typings";
+import {IMessage, IAttachment, IConfiguration} from "../typings";
 
 export default class Chat extends Component<IChatProps, IChatState> {
 
@@ -178,35 +178,42 @@ export default class Chat extends Component<IChatProps, IChatState> {
       element.click();
     };
 
-    handleFileSelect = (e: HTMLInputEvent) => {
+    handleFileSelect = (e: HTMLInputEvent) => {  
 
+        const reader = new FileReader();
+        const file: File = e.target.files[0];
 
-        // let postData: FormData  = new FormData();
-        // postData.append('driver', 'web');
-        // postData.append('userId', this.props.userId);
-        // postData.append('message', null);
-        // postData.append('attachment', 'image');
-        // postData.append('interactive', '0');
-        // postData.append('attachment_data', e.target.files[0] );
+        // reader.addEventListener("load", this.readImage, false);
+        reader.onload = (e) =>  {
 
-        const message: IMessage = {
-            text: null,
-            type: "text",
-            from: this.props.userId,
-            attachment: e.target.files[0]
-        };
+          const attachment: IAttachment = {
+              url : reader.result,
+              type : 'image'
+          };
 
-        const attachment: IAttachment{
-          
+          const message: IMessage = {
+              text: null,
+              type: "text",
+              from: "visitor",
+              attachment: attachment
+          };
+          this.writeToMessages(message);
         }
+
+
+        reader.readAsDataURL(file);
 
 
         this.botman.callAPI(null, false, e.target.files[0], (msg: IMessage) => {
             msg.from = "chatbot";
             this.writeToMessages(msg);
         });
-        this.writeToMessages(message);
+
      };
+
+
+
+
 
     static generateUuid() {
         let uuid = '', ii;
