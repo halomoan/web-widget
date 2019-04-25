@@ -178,7 +178,7 @@ export default class Chat extends Component<IChatProps, IChatState> {
       element.click();
     };
 
-    handleFileSelect = (e: HTMLInputEvent) => {  
+    handleFileSelect = (e: HTMLInputEvent) => {
 
         const reader = new FileReader();
         const file: File = e.target.files[0];
@@ -266,9 +266,18 @@ export default class Chat extends Component<IChatProps, IChatState> {
 	        this.setState({
                 replyType: msg.additionalParameters.replyType
             });
-        }
+      }
+
+      this.inputFocus();
 	};
+
+  inputFocus() {
+    let element: HTMLInputElement = document.getElementById('userText') as HTMLInputElement;
+    element.focus();
+  }
 }
+
+
 
 interface IChatProps {
     userId: string,

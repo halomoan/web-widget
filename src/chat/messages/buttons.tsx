@@ -39,5 +39,8 @@ export default class ButtonsType extends MessageType {
                 from: 'chatbot'
             });
         }, null);
+        
     }
+
+
 }
